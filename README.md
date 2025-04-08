@@ -33,8 +33,8 @@ Ez egy Flask-alapú webalkalmazás, amely lehetőséget biztosít a felhasznál�
 2. **Repo klónozása**
 
     ```bash
-    git clone https://github.com/felhasznalo/zentime-masszazs.git
-    cd zentime-masszazs
+    git clone https://github.com/RakDavid/massage_booking.git
+    cd massage_booking
     ```
 
 3. **Virtuális környezet létrehozása és aktiválása**
@@ -64,13 +64,14 @@ Ez egy Flask-alapú webalkalmazás, amely lehetőséget biztosít a felhasznál�
     Hozz létre egy `.env` fájlt az alábbi tartalommal:
 
     ```
+    SECRET_KEY=nagyon-titkos-kulcs
     DATABASE_URL=sqlite:///db.sqlite3
     ```
 
-6. **Adatbázis inicializálása**
+6. **A projekt pip installálása `setup.py` segítségével**
 
-   ```bash
-    python init_db.py
+    ```bash
+    pip install .
     ```
 
 7. **Alkalmazás futtatása**
@@ -94,16 +95,6 @@ python -m unittest discover
 ```bash
 coverage run -m unittest discover
 coverage report
-```
-
----
-
-## 📦 Csomagolás
-
-A projekt pip installálható a `setup.py` segítségével:
-
-```bash
-pip install .
 ```
 
 ---

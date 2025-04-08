@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center" style="color: #5e35b1;">Admin felület</h2>
+
+    <div class="mb-5">
+        <h4 class="mt-5 mb-4" style="color: #7e57c2;">Felhasználók</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Név</th>
+                    <th>Email</th>
+                    <th>Művelet</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        {% if not user.is_admin %}
+                        <a href="{{ url_for('main.delete_user', user_id=user.id) }}" class="btn btn-sm btn-outline-danger">Törlés</a>
+                        {% else %}
+                        <span class="text-muted">Admin</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mb-5">
+        <h4 class="mb-4" style="color: #7e57c2;">Szolgáltatások</h4>
+            
+            <table class="table table-bordered align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Név</th>
+                        <th>Leírás</th>
+                        <th>Ár</th>
+                        <th>Kép</th>
+                        <th style="width: 130px;">Művelet</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for service in services %}
+                    <tr>
+                        <td>{{ service.name }}</td>
+                        <td>{{ service.description }}</td>
+                        <td>{{ service.price }} Ft</td>
+                        <td>
+                            {% if service.image_filename %}
+                            <img src="{{ url_for('static', filename='uploads/' + service.image_filename) }}" alt="Kép" style="height: 50px; border-radius: 0.5rem;">
+                            {% else %}
+                            <span class="text-muted">Nincs kép</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-nowrap">
+                            <div class="d-flex gap-2">
+                              <a href="{{ url_for('main.edit_service', service_id=service.id) }}" class="btn btn-outline-primary btn-sm">Módosítás</a>
+                              <a href="{{ url_for('main.delete_service', service_id=service.id) }}" class="btn btn-outline-danger btn-sm">Törlés</a>
+                            </div>
+                          </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    
+            <hr class="my-4">
+    
+            <h5 class="mb-3" style="color: #5e35b1;">Új szolgáltatás hozzáadása</h5>
+
+            <form method="POST" action="{{ url_for('main.add_service') }}" enctype="multipart/form-data">
+                {{ service_form.hidden_tag() }}
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-2">
+                        {{ service_form.name(class="form-control", placeholder="Név") }}
+                    </div>
+                    <div class="col-md-3">
+                        {{ service_form.description(class="form-control", placeholder="Leírás", style="height: 38px;") }}
+                    </div>
+                    <div class="col-md-2">
+                        {{ service_form.price(class="form-control", placeholder="Ár") }}
+                    </div>
+                    <div class="col-md-3">
+                        {{ service_form.image(class="form-control") }}
+                    </div>
+                    <div class="col-md-2 d-grid">
+                        <button class="btn btn-primary" type="submit">Hozzáadás</button>
+                    </div>
+                </div>
+            </form>
+    </div>
+    
+
+    <div>
+        <h4 class="mt-5 mb-4" style="color: #7e57c2;">Foglalások</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Felhasználó</th>
+                    <th>Dátum</th>
+                    <th>Idő</th>
+                    <th>Szolgáltatás</th>
+                    <th>Művelet</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.user.name }}</td>
+                    <td>{{ booking.date }}</td>
+                    <td>{{ booking.time }}</td>
+                    <td>{{ booking.service }}</td>
+                    <td>
+                        <a href="{{ url_for('main.delete_booking', booking_id=booking.id) }}" class="btn btn-sm btn-danger">Törlés</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h4 class="text-center">Foglalások eloszlása szolgáltatás szerint</h4>
+            <div style="height: 350px; position: relative;">
+                <canvas id="serviceChart"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4 class="text-center">Foglalások eloszlása hét napjai szerint</h4>
+            <div style="height: 350px; position: relative;">
+                <canvas id="weekdayChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        const serviceLabels = JSON.parse('{{ service_chart_data | map(attribute=0) | list | tojson | safe }}');
+        const serviceCounts = JSON.parse('{{ service_chart_data | map(attribute=1) | list | tojson | safe }}');
+    
+        const weekdayLabels = JSON.parse('{{ weekday_chart_data | map(attribute=0) | list | tojson | safe }}');
+        const weekdayCounts = JSON.parse('{{ weekday_chart_data | map(attribute=1) | list | tojson | safe }}');
+    
+        new Chart(document.getElementById('serviceChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: serviceLabels,
+                datasets: [{
+                    label: 'Foglalások száma',
+                    data: serviceCounts,
+                    backgroundColor: ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    
+        new Chart(document.getElementById('weekdayChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: weekdayLabels,
+                datasets: [{
+                    label: 'Foglalások száma',
+                    data: weekdayCounts,
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Foglalások száma'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    
+</div>
+
+{% endblock %}

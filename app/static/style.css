@@ -1,0 +1,195 @@
+
+body {
+    background: linear-gradient(-45deg, #ede7f6, #f3e5f5, #e1bee7, #d1c4e9);
+    background-size: 400% 400%;
+    animation: wave 15s ease infinite;
+}
+
+@keyframes wave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+.hero {
+    background-image: url("/static/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 0 0 12px rgba(0,0,0,0.6);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+}
+
+
+.card {
+    border: none;
+    border-radius: 1rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.profile-page .card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-lg {
+    font-size: 1.1rem;
+    padding: 0.75rem 2rem;
+}
+
+.flatpickr-input {
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ced4da;
+}
+
+.navbar {
+    background-color: #ede7f6 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-nav .nav-link {
+    color: #5e35b1;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(94, 53, 177, 0.1);
+    color: #4527a0;
+}
+
+.navbar-nav .nav-link,
+.navbar-nav .nav-link:visited,
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:active,
+.navbar-nav .nav-link:focus {
+    text-decoration: none !important;
+}
+
+.btn-outline-primary {
+    color: #7e57c2;
+    border-color: #7e57c2;
+}
+
+.btn-outline-primary:hover {
+    background-color: #5e35b1;
+    border-color: #5e35b1;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #7e57c2 !important;
+    border-color: #7e57c2 !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    background-color: #5e35b1 !important;
+    border-color: #5e35b1 !important;
+}
+
+.text-primary {
+    color: #7e57c2 !important;
+}
+
+/* Lila Flatpickr téma */
+.flatpickr-calendar {
+    font-family: 'Segoe UI', sans-serif;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Fejléc (hónap + év) */
+.flatpickr-months {
+    background-color: #7e57c2;
+    color: white;
+    border-bottom: none;
+}
+
+.flatpickr-months .flatpickr-prev-month svg,
+.flatpickr-months .flatpickr-next-month svg {
+    fill: white;
+}
+
+/* Nap nevek */
+.flatpickr-weekdays {
+    background-color: #ede7f6;
+}
+
+.flatpickr-weekday {
+    color: #5e35b1;
+    font-weight: bold;
+}
+
+/* Napok */
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected.inRange,
+.flatpickr-day.startRange.inRange,
+.flatpickr-day.endRange.inRange,
+.flatpickr-day:focus {
+    background: #7e57c2 !important;
+    border-color: #7e57c2 !important;
+    color: white !important;
+}
+
+/* Aktuális nap karikája */
+.flatpickr-day.today {
+    border: 1px solid #7e57c2;
+}
+
+/* Hover */
+.flatpickr-day:hover {
+    background: #f3e5f5;
+    border-color: #7e57c2;
+    color: #5e35b1;
+}
+
+.fc-col-header-cell-cushion {
+    color: #5e35b1 !important;
+    font-weight: 600;
+}
+
+.profile-page .card {
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.profile-page h2, .profile-page h3, .profile-page h4 {
+    color: #5e35b1;
+    font-weight: 600;
+}
+
+.btn-outline-danger {
+    border-color: #e57373;
+    color: #e57373;
+}
+
+.btn-outline-danger:hover {
+    background-color: #e57373;
+    color: white;
+}

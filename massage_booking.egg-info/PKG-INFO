@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: massage_booking
+Version: 1.0.0
+Requires-Dist: Flask==3.1.0
+Requires-Dist: Flask-Login==0.6.3
+Requires-Dist: Flask-Mail==0.10.0
+Requires-Dist: Flask-SQLAlchemy==3.1.1
+Requires-Dist: Flask-WTF==1.2.2
+Requires-Dist: Werkzeug==3.1.3
+Requires-Dist: WTForms==3.2.1
+Requires-Dist: ics==0.7.2
+Requires-Dist: email_validator==2.2.0
+Requires-Dist: python-dotenv==1.1.0
+Dynamic: requires-dist

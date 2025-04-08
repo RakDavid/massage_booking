@@ -127,6 +127,7 @@ pylint app/
 ## 🔐 Jogosultságkezelés
 
 - Admin jog: `is_admin=True`
+- Az admin user adatait megtalálhatod az init_db.py fájlban
 - Route védelem: `@login_required`, `current_user.is_admin`
 
 ---

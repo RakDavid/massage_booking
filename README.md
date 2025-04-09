@@ -1,6 +1,6 @@
 # 💆 Zentime Masszázs Időpontfoglaló Rendszer
 
-Ez egy Flask-alapú webalkalmazás, amely lehetőséget biztosít a felhasználóknak masszázs időpontok online foglalására, valamint az adminisztrátoroknak a szolgáltatások, foglalások és felhasználók kezelésére.
+Webalapú időpontfoglaló alkalmazás Flask keretrendszerrel, profilkezeléssel, admin funkciókkal és email értesítésekkel.
 
 ---
 
@@ -112,7 +112,7 @@ flake8 app/
 ```bash
 pylint app/
 ```
-
+A `flake8` és `pylint` kódelemzők használatával ellenőriztem a projektet. A jelentéseket `lint_report.txt` és `flake8_report.txt` fájlokban csatoltam a beadáshoz.
 ---
 
 ## 🔐 Jogosultságkezelés
@@ -131,4 +131,4 @@ Az alkalmazás támogatja a jövőbeni email értesítések küldését a `Flask
 
 ## 📃 Licenc
 
-Ez a projekt oktatási célra készült.
+Ez a projekt oktatási célra készült, kereskedelmi felhasználása nem engedélyezett.

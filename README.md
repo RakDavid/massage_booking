@@ -66,6 +66,16 @@ Webalapú időpontfoglaló alkalmazás Flask keretrendszerrel, profilkezeléssel
     ```
     SECRET_KEY=nagyon-titkos-kulcs
     DATABASE_URL=sqlite:///db.sqlite3
+    
+    MAIL_SERVER=smtp.gmail.com
+    MAIL_PORT=587
+    MAIL_USE_TLS=True
+    MAIL_USE_SSL=False
+    MAIL_USERNAME=zentimedemo@gmail.com
+    MAIL_PASSWORD=zegesfhaemiuttuv
+    MAIL_DEFAULT_SENDER_EMAIL=zentimedemo@gmail.com
+    MAIL_DEFAULT_SENDER_NAME=Zentime Masszázs Stúdió
+    
     ```
 
 6. **A projekt pip installálása `setup.py` segítségével**
@@ -89,13 +99,13 @@ A projekthez `unittest` alapú egységtesztek készültek a `coverage` segítsé
 ### Tesztek futtatása
 
 ```bash
-python -m unittest discover
+python -m unittest discover -s tests -p "*_test.py"
 ```
 
 ### Tesztlefedettség (coverage)
 
 ```bash
-coverage run -m unittest discover
+coverage run -m unittest discover -s tests -p "*_test.py"
 coverage report
 ```
 

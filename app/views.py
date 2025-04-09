@@ -591,7 +591,7 @@ def free_slots():
     events = []
 
     for day in upcoming_days:
-        if day.weekday() in [5, 6]: 
+        if day.weekday() in [5, 6]:
             continue
 
         bookings = Booking.query.filter_by(date=day).all()

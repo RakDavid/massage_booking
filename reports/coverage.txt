@@ -1,0 +1,19 @@
+Name                        Stmts   Miss  Cover   Missing
+---------------------------------------------------------
+app\__init__.py                17      1    94%   24
+app\extensions.py               6      0   100%
+app\forms.py                   43      4    91%   68-70, 74
+app\models.py                  26      0   100%
+app\views.py                  327     55    83%   82-83, 90-92, 103, 134, 142-143, 229-230, 238-240, 259-263, 281, 283, 288-289, 303, 332, 350-351, 357, 369-383, 394-396, 405-406, 445-446, 451, 470-471, 490, 500-501, 523-525, 531, 581-582, 605
+config.py                      14      0   100%
+tests\admin_test.py            70      1    99%   92
+tests\auth_test.py             44      1    98%   73
+tests\booking_test.py          62      1    98%   94
+tests\bookingform_test.py      74      1    99%   137
+tests\export_test.py           42      1    98%   64
+tests\profile_test.py          41      1    98%   69
+tests\service_test.py          31      1    97%   39
+tests\slots_test.py            41      1    98%   51
+tests\user_test.py             35      1    97%   44
+---------------------------------------------------------
+TOTAL                         873     69    92%

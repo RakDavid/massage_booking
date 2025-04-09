@@ -1,0 +1,16 @@
+************* Module app.views
+app\views.py:31:4: W0621: Redefining name 'services' from outer scope (line 578) (redefined-outer-name)
+app\views.py:74:0: R0914: Too many local variables (26/15) (too-many-locals)
+app\views.py:97:4: W0621: Redefining name 'services' from outer scope (line 578) (redefined-outer-name)
+app\views.py:74:0: R0912: Too many branches (15/12) (too-many-branches)
+app\views.py:74:0: R0915: Too many statements (54/50) (too-many-statements)
+app\views.py:222:0: R0914: Too many local variables (22/15) (too-many-locals)
+app\views.py:409:4: W0621: Redefining name 'services' from outer scope (line 578) (redefined-outer-name)
+app\views.py:415:25: E1102: func.count is not callable (not-callable)
+app\views.py:420:8: E1102: func.count is not callable (not-callable)
+app\views.py:581:4: W0621: Redefining name 'services' from outer scope (line 578) (redefined-outer-name)
+app\views.py:1:0: R0401: Cyclic import (app -> app.views) (cyclic-import)
+
+------------------------------------------------------------------
+Your code has been rated at 9.51/10 (previous run: 9.51/10, +0.00)
+

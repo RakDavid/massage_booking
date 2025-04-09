@@ -17,12 +17,10 @@ class FreeSlotsTestCase(unittest.TestCase):
         db.create_all()
         self.client = self.app.test_client()
 
-        # Létrehozunk egy teszt usert és egy foglalást
         self.user = User(name='Teszt User', email='teszt@user.hu', password=generate_password_hash('teszt'))
         db.session.add(self.user)
         db.session.commit()
 
-        # Holnapra egy foglalt időpont 10:00
         tomorrow = date.today() + timedelta(days=1)
         db.session.add(Booking(date=tomorrow, time='10:00', service='Relax', user_id=self.user.id))
         db.session.commit()

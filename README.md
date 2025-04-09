@@ -94,7 +94,7 @@ Webalapú időpontfoglaló alkalmazás Flask keretrendszerrel, profilkezeléssel
 
 ## 🧪 Tesztelés
 
-A projekthez `unittest` alapú egységtesztek készültek a `coverage` segítségével, amelyek lefedik a legfontosabb funkciókat, beleértve a bejelentkezést, regisztrációt, időpontfoglalást, admin műveleteket, profilmódosítást és .ics exportálást. Az erről készült jelentést `coverage.txt` fájlban csatoltam a beadáshoz
+A projekthez `unittest` alapú egységtesztek készültek a `coverage` segítségével, amelyek lefedik a legfontosabb funkciókat, beleértve a bejelentkezést, regisztrációt, időpontfoglalást, admin műveleteket, profilmódosítást és .ics exportálást. Az erről készült jelentést `reports/coverage.txt` fájlban csatoltam a beadáshoz
 
 ### Tesztek futtatása
 
@@ -113,7 +113,7 @@ coverage report
 
 ## 🧼 Statikus elemzés
 
-A `flake8` és `pylint` kódelemzők használatával ellenőriztem a projektet. A jelentéseket `lint_report.txt` és `flake8_report.txt` fájlokban csatoltam a beadáshoz.
+A `flake8` és `pylint` kódelemzők használatával ellenőriztem a projektet. A jelentéseket `reports/lint_report.txt` és `reports/flake8_report.txt` fájlokban csatoltam a beadáshoz.
 
 ### PEP8 ellenőrzés
 

@@ -1,6 +1,6 @@
 # 💆 Zentime Masszázs Időpontfoglaló Rendszer
 
-Ez egy Flask-alapú webalkalmazás, amely lehetőséget biztosít a felhasználóknak masszázs időpontok online foglalására, valamint az adminisztrátoroknak a szolgáltatások, foglalások és felhasználók kezelésére.
+Webalapú időpontfoglaló alkalmazás Flask keretrendszerrel, profilkezeléssel, admin funkciókkal és email értesítésekkel.
 
 ---
 
@@ -33,8 +33,8 @@ Ez egy Flask-alapú webalkalmazás, amely lehetőséget biztosít a felhasznál�
 2. **Repo klónozása**
 
     ```bash
-    git clone https://github.com/felhasznalo/zentime-masszazs.git
-    cd zentime-masszazs
+    git clone https://github.com/RakDavid/massage_booking.git
+    cd massage_booking
     ```
 
 3. **Virtuális környezet létrehozása és aktiválása**
@@ -64,13 +64,24 @@ Ez egy Flask-alapú webalkalmazás, amely lehetőséget biztosít a felhasznál�
     Hozz létre egy `.env` fájlt az alábbi tartalommal:
 
     ```
+    SECRET_KEY=nagyon-titkos-kulcs
     DATABASE_URL=sqlite:///db.sqlite3
+    
+    MAIL_SERVER=smtp.gmail.com
+    MAIL_PORT=587
+    MAIL_USE_TLS=True
+    MAIL_USE_SSL=False
+    MAIL_USERNAME=zentimedemo@gmail.com
+    MAIL_PASSWORD=zegesfhaemiuttuv
+    MAIL_DEFAULT_SENDER_EMAIL=zentimedemo@gmail.com
+    MAIL_DEFAULT_SENDER_NAME=Zentime Masszázs Stúdió
+    
     ```
 
-6. **Adatbázis inicializálása**
+6. **A projekt pip installálása `setup.py` segítségével**
 
-   ```bash
-    python init_db.py
+    ```bash
+    pip install .
     ```
 
 7. **Alkalmazás futtatása**
@@ -83,32 +94,26 @@ Ez egy Flask-alapú webalkalmazás, amely lehetőséget biztosít a felhasznál�
 
 ## 🧪 Tesztelés
 
+A projekthez `unittest` alapú egységtesztek készültek a `coverage` segítségével, amelyek lefedik a legfontosabb funkciókat, beleértve a bejelentkezést, regisztrációt, időpontfoglalást, admin műveleteket, profilmódosítást és .ics exportálást. Az erről készült jelentést `coverage.txt` fájlban csatoltam a beadáshoz
+
 ### Tesztek futtatása
 
 ```bash
-python -m unittest discover
+python -m unittest discover -s tests -p "*_test.py"
 ```
 
 ### Tesztlefedettség (coverage)
 
 ```bash
-coverage run -m unittest discover
+coverage run -m unittest discover -s tests -p "*_test.py"
 coverage report
 ```
 
 ---
 
-## 📦 Csomagolás
-
-A projekt pip installálható a `setup.py` segítségével:
-
-```bash
-pip install .
-```
-
----
-
 ## 🧼 Statikus elemzés
+
+A `flake8` és `pylint` kódelemzők használatával ellenőriztem a projektet. A jelentéseket `lint_report.txt` és `flake8_report.txt` fájlokban csatoltam a beadáshoz.
 
 ### PEP8 ellenőrzés
 
@@ -121,12 +126,12 @@ flake8 app/
 ```bash
 pylint app/
 ```
-
 ---
 
 ## 🔐 Jogosultságkezelés
 
 - Admin jog: `is_admin=True`
+- Az admin user adatait megtalálhatod az init_db.py fájlban
 - Route védelem: `@login_required`, `current_user.is_admin`
 
 ---
@@ -139,4 +144,4 @@ Az alkalmazás támogatja a jövőbeni email értesítések küldését a `Flask
 
 ## 📃 Licenc
 
-Ez a projekt oktatási célra készült.
+Ez a projekt oktatási célra készült, kereskedelmi felhasználása nem engedélyezett.

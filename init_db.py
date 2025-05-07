@@ -2,7 +2,7 @@ import os
 import shutil
 from datetime import datetime
 from app import create_app, db
-from app.models import User
+from app.models import User, MassageService, Booking
 from werkzeug.security import generate_password_hash
 from dotenv import load_dotenv
 from sqlalchemy.engine.url import make_url
